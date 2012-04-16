@@ -1,5 +1,4 @@
 #include "FourChoicesWidget.hpp"
-
 FourChoicesWidget::FourChoicesWidget(MainWindow* mainWindowPtr):_mainWindowPtr(mainWindowPtr)
 {
   int i;
@@ -30,10 +29,13 @@ FourChoicesWidget::FourChoicesWidget(MainWindow* mainWindowPtr):_mainWindowPtr(m
 FourChoicesWidget::~FourChoicesWidget()
 {
   int i;
-  delete _signalMapper;
+  for(i=0;i<4;++i)
+    {
+      QObject::disconnect(_buttons[i], SIGNAL(clicked()),_signalMapper,SLOT(map()));
+      delete _buttons[i];
+    }
+  QObject::disconnect(_signalMapper,SIGNAL(mapped(int)),_mainWindowPtr,SLOT(displayTransitionWidget(int)));
   delete _textZone;
   delete _layout;
-  for(i=0;i<4;++i)
-    delete _buttons[i];
-
+  delete _signalMapper;
 }

@@ -1,5 +1,4 @@
 #include "TransitionWidget.hpp"
-
 TransitionWidget::TransitionWidget(MainWindow* mainWindowPtr, int number):_mainWindowPtr(mainWindowPtr)
 {
   QString text=_mainWindowPtr->getEnginePtr()->getLevelPtr()->getEffectText(number);
@@ -18,6 +17,8 @@ TransitionWidget::TransitionWidget(MainWindow* mainWindowPtr, int number):_mainW
 
 TransitionWidget::~TransitionWidget()
 {
+  QObject::disconnect(_mapper,SIGNAL(mapped(int)),_mainWindowPtr,SLOT(nextLevel(int)));
+  QObject::disconnect(_button,SIGNAL(clicked()),_mapper,SLOT(map()));
   delete _textZone;
   delete _mapper;
   delete _button;
