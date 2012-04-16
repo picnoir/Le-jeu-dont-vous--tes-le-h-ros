@@ -1,0 +1,6 @@
+<level id=1 type="fourChoices" text="l5Test texte">
+  <choice enonce="l5texte choix1 ééé" textEffect="l5texte effet1" effect="10" link="01.xml"/>
+  <choice enonce="l5texte choix2" textEffect="l5texte effet2" effect="10" link="02.xml"/>
+  <choice enonce="l5texte choix3" textEffect="l5texte effet3" effect="10" link="03.xml"/>
+  <choice enonce="l5texte choix4" textEffect="l5texte effet4" effect="10" link="04.xml"/>
+</level>
