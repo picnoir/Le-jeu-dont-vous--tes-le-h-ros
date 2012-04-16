@@ -13,6 +13,7 @@ protected:
   QMenu* _menuFichier;
   QAction* _actionQuitter;
   Engine* _enginePtr;
+  QWidget* _old;
 public slots:
   void displayTransitionWidget(int);
   void nextLevel(int);

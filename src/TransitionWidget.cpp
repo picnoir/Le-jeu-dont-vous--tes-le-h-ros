@@ -20,7 +20,7 @@ TransitionWidget::~TransitionWidget()
   QObject::disconnect(_mapper,SIGNAL(mapped(int)),_mainWindowPtr,SLOT(nextLevel(int)));
   QObject::disconnect(_button,SIGNAL(clicked()),_mapper,SLOT(map()));
   delete _textZone;
-  delete _mapper;
+  //delete _mapper;
   delete _button;
   delete _layout;
 }

@@ -2,7 +2,7 @@
 #include "TransitionWidget.hpp"
 #include "FourChoicesWidget.hpp"
 #include <QtGui>
-MainWindow::MainWindow(Engine* enginePtr):_centralWidget(NULL),_enginePtr(enginePtr)
+MainWindow::MainWindow(Engine* enginePtr):_centralWidget(NULL),_enginePtr(enginePtr),_old(NULL)
 {
   _menuFichier=menuBar()->addMenu("&Fichier");
   _actionQuitter=new QAction("&Quitter",this);
@@ -20,16 +20,12 @@ MainWindow::~MainWindow()
 
 void MainWindow::displayTransitionWidget(int number)
 {
-  if(_centralWidget!=NULL)
-    delete _centralWidget;
   _centralWidget=new TransitionWidget(this,number);
   setCentralWidget(_centralWidget);
 }
 
 void MainWindow::displayFourChoicesWidget()
 {
-  if(_centralWidget!=NULL)
-    delete _centralWidget;
   _centralWidget=new FourChoicesWidget(this);
   setCentralWidget(_centralWidget);
 }
