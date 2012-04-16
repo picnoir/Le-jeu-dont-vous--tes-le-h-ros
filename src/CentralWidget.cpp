@@ -38,6 +38,7 @@ void CentralWidget::nextLevel(int link)
 
 void CentralWidget::createWidget()
 {
+  _mainWindowPtr->updateHud();
   LevelType type=_mainWindowPtr->getEnginePtr()->getLevelPtr()->getLevelType();
   if(type==FourChoices)
     displayFourChoicesWidget();

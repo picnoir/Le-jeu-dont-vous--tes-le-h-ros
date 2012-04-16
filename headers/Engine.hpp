@@ -16,6 +16,7 @@ protected:
 public:
   Engine();
   Level* getLevelPtr(){return _levelPtr;}
+  People* getPlayerPtr(){return _playerPtr;}
   void chooseLevel(const std::string & link);
   void parseFourChoices(TiXmlDocument & xmlDocument);
   ~Engine();

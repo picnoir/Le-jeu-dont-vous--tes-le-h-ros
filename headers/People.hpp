@@ -10,6 +10,8 @@ protected:
   QList<Skill> _skills;
 public:
   People(const int & hp, const int & cp, const QList<Skill> & skills);
+  int getHp(){return _hp;}
+  int getCp(){return _cp;}
   ~People();
 };
 #endif

@@ -4,7 +4,7 @@
 Engine::Engine():_levelPtr(NULL)
 {
   QList<Skill> skills;
-  _playerPtr=new People(100,100,skills);
+  _playerPtr=new People(100,90,skills);
 }
 
 Engine::~Engine()

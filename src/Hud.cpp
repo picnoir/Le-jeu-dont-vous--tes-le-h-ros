@@ -15,10 +15,14 @@ Hud::Hud(MainWindow* mainWindowPtr):_mainWindowPtr(mainWindowPtr)
   _layout->addWidget(_cpText,2,0);
   _layout->addWidget(_cpBar,2,1);
   this->setLayout(_layout);
+  QObject::connect(_mainWindowPtr,SIGNAL(hp(int)),_hpBar,SLOT(setValue(int)));
+  QObject::connect(_mainWindowPtr,SIGNAL(cp(int)),_cpBar,SLOT(setValue(int)));
 }
 
 Hud::~Hud()
 {
+  QObject::disconnect(_mainWindowPtr,SIGNAL(hp(int)),_hpBar,SLOT(setValue(int)));
+  QObject::disconnect(_mainWindowPtr,SIGNAL(cp(int)),_cpBar,SLOT(setValue(int)));
   delete _layout;
   delete _button;
   delete _cpBar;

@@ -12,6 +12,15 @@ MainWindow::MainWindow(Engine* enginePtr):_centralWidget(NULL),_enginePtr(engine
   connect(_actionQuitter, SIGNAL(triggered()), qApp,SLOT(quit()));
 }
 
+void MainWindow::updateHud()
+{
+  int life,stamina;
+  life=_enginePtr->getPlayerPtr()->getHp();
+  stamina=_enginePtr->getPlayerPtr()->getCp();
+  emit hp(life);
+  emit cp(stamina);
+}
+
 MainWindow::~MainWindow()
 {
   if(_centralWidget!=NULL)
