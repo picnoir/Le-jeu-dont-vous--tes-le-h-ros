@@ -10,6 +10,5 @@ int main(int argc, char** argv)
   engine.chooseLevel("01.xml");
   MainWindow mainWindow(&engine);
   mainWindow.show();
-  mainWindow.createWidget();
   return app.exec();
 }

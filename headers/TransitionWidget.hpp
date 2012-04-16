@@ -5,7 +5,7 @@
 #include <QPushButton>
 #include <QVBoxLayout>
 #include <QSignalMapper>
-#include "MainWindow.hpp"
+#include "CentralWidget.hpp"
 class TransitionWidget:public QWidget
 {
 protected:
@@ -13,9 +13,9 @@ protected:
   QPushButton* _button;
   QVBoxLayout *_layout;
   QSignalMapper* _mapper;
-  MainWindow* _mainWindowPtr;
+  CentralWidget* _parentPtr;
 public:
-  TransitionWidget(MainWindow* mainWindowPtr, int number);
+  TransitionWidget(CentralWidget* parent, int number);
   virtual ~TransitionWidget();
 };
 

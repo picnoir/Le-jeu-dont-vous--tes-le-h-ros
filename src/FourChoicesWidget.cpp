@@ -1,14 +1,14 @@
 #include "FourChoicesWidget.hpp"
-FourChoicesWidget::FourChoicesWidget(MainWindow* mainWindowPtr):_mainWindowPtr(mainWindowPtr)
+FourChoicesWidget::FourChoicesWidget(CentralWidget* parentPtr):_parentPtr(parentPtr)
 {
   int i;
   QList<QString> buttonText;
-  buttonText=_mainWindowPtr->getEnginePtr()->getLevelPtr()->getButtonsName();
+  buttonText=_parentPtr->getMainWindowPtr()->getEnginePtr()->getLevelPtr()->getButtonsName();
 
 
   _signalMapper= new QSignalMapper(this);
   _textZone=new QLabel;
-  _textZone->setText(_mainWindowPtr->getEnginePtr()->getLevelPtr()->getText());
+  _textZone->setText(_parentPtr->getMainWindowPtr()->getEnginePtr()->getLevelPtr()->getText());
   _textZone->setAlignment(Qt::AlignHCenter|Qt::AlignVCenter);
   _layout=new QGridLayout;
   for(i=0;i<4;++i)
@@ -17,7 +17,7 @@ FourChoicesWidget::FourChoicesWidget(MainWindow* mainWindowPtr):_mainWindowPtr(m
       QObject::connect(_buttons[i], SIGNAL(clicked()), _signalMapper, SLOT(map()));
       _signalMapper->setMapping(_buttons[i], i);
     }
-  QObject::connect(_signalMapper,SIGNAL(mapped(int)),_mainWindowPtr,SLOT(displayTransitionWidget(int)));
+  QObject::connect(_signalMapper,SIGNAL(mapped(int)),_parentPtr,SLOT(displayTransitionWidget(int)));
   _layout->addWidget(_textZone,0,0,1,2);
   _layout->addWidget(_buttons[0],1,0);
   _layout->addWidget(_buttons[1],1,1);
@@ -34,7 +34,7 @@ FourChoicesWidget::~FourChoicesWidget()
       QObject::disconnect(_buttons[i], SIGNAL(clicked()),_signalMapper,SLOT(map()));
       delete _buttons[i];
     }
-  QObject::disconnect(_signalMapper,SIGNAL(mapped(int)),_mainWindowPtr,SLOT(displayTransitionWidget(int)));
+  QObject::disconnect(_signalMapper,SIGNAL(mapped(int)),_parentPtr,SLOT(displayTransitionWidget(int)));
   delete _textZone;
   delete _layout;
   delete _signalMapper;

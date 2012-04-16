@@ -1,9 +1,10 @@
 #include "MainWindow.hpp"
-#include "TransitionWidget.hpp"
-#include "FourChoicesWidget.hpp"
 #include <QtGui>
-MainWindow::MainWindow(Engine* enginePtr):_centralWidget(NULL),_enginePtr(enginePtr),_old(NULL)
+#include "Hud.hpp"
+#include "CentralWidget.hpp"
+MainWindow::MainWindow(Engine* enginePtr):_centralWidget(NULL),_enginePtr(enginePtr)
 {
+  _centralWidget=new CentralWidget(this);
   _menuFichier=menuBar()->addMenu("&Fichier");
   _actionQuitter=new QAction("&Quitter",this);
   _actionQuitter->setShortcut(QKeySequence("Ctrl+Q"));
@@ -18,28 +19,3 @@ MainWindow::~MainWindow()
   delete _actionQuitter;
 }
 
-void MainWindow::displayTransitionWidget(int number)
-{
-  _centralWidget=new TransitionWidget(this,number);
-  setCentralWidget(_centralWidget);
-}
-
-void MainWindow::displayFourChoicesWidget()
-{
-  _centralWidget=new FourChoicesWidget(this);
-  setCentralWidget(_centralWidget);
-}
-
-void MainWindow::createWidget()
-{
-  LevelType type=_enginePtr->getLevelPtr()->getLevelType();
-  if(type==FourChoices)
-    displayFourChoicesWidget();
-}
-
-void MainWindow::nextLevel(int link)
-{
-  QString linkText=getEnginePtr()->getLevelPtr()->getLink(link);
-  getEnginePtr()->chooseLevel(linkText.toStdString());
-  createWidget();
-}

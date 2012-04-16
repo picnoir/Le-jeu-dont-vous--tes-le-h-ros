@@ -6,17 +6,17 @@
 #include <QGridLayout>
 #include <QSignalMapper>
 #include <QPushButton>
-#include "MainWindow.hpp"
+#include "CentralWidget.hpp"
 class FourChoicesWidget: public QWidget
 {
 protected:
   QLabel* _textZone;
   QList<QPushButton*> _buttons;
   QGridLayout* _layout;
-  MainWindow* _mainWindowPtr;
+  CentralWidget* _parentPtr;
   QSignalMapper* _signalMapper;
 public:
-  FourChoicesWidget(MainWindow* mainWindowPtr);
+  FourChoicesWidget(CentralWidget* parentPtr);
   virtual ~FourChoicesWidget();
 };
 
