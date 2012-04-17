@@ -1,6 +1,6 @@
 <level id=3 type="fourChoices" text="Test texte level3">
-  <choice enonce="l3texte choix1 ééé" textEffect="l3texte effet1" effect="10" link="01.xml"/>
-  <choice enonce="l3texte choix2" textEffect="l3texte effet2" effect="10" link="02.xml"/>
-  <choice enonce="l3texte choix3" textEffect="l3texte effet3" effect="10" link="03.xml"/>
-  <choice enonce="l3texte choix4" textEffect="l3texte effet4" effect="10" link="04.xml"/>
+  <choice enonce="l3texte choix1 ééé" textEffect="l3texte effet1" effectHp="-10" effectCp="1" link="01.xml"/>
+  <choice enonce="l3texte choix2" textEffect="l3texte effet2" effectHp="-10" effectCp="1" link="02.xml"/>
+  <choice enonce="l3texte choix3" textEffect="l3texte effet3" effectHp="-10" effectCp="1" link="03.xml"/>
+  <choice enonce="l3texte choix4" textEffect="l3texte effet4" effectHp="-10" effectCp="1" link="04.xml"/>
 </level>

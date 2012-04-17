@@ -19,6 +19,7 @@ CentralWidget::~CentralWidget()
 
 void CentralWidget::displayTransitionWidget(int number)
 {
+  _mainWindowPtr->getEnginePtr()->applyEffect(number);
   QWidget* old=_gameWidget;
   _gameWidget=new TransitionWidget(this,number);
   if(old!=NULL)

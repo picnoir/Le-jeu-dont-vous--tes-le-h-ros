@@ -9,9 +9,11 @@ protected:
   int _cp;
   QList<Skill> _skills;
 public:
-  People(const int & hp, const int & cp, const QList<Skill> & skills);
+  People(int hp,int cp,const QList<Skill> & skills);
   int getHp(){return _hp;}
   int getCp(){return _cp;}
+  void setHp(int hp){_hp=hp;}
+  void setCp(int cp){_cp=cp;}
   ~People();
 };
 #endif

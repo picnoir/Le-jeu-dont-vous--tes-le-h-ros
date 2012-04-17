@@ -34,7 +34,6 @@ FourChoicesWidget::~FourChoicesWidget()
       QObject::disconnect(_buttons[i], SIGNAL(clicked()),_signalMapper,SLOT(map()));
       delete _buttons[i];
     }
-  QObject::disconnect(_signalMapper,SIGNAL(mapped(int)),_parentPtr,SLOT(displayTransitionWidget(int)));
   delete _textZone;
   delete _layout;
   delete _signalMapper;
