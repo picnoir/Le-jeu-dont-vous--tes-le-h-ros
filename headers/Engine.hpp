@@ -19,7 +19,7 @@ public:
   People* getPlayerPtr(){return _playerPtr;}
   void chooseLevel(const std::string & link);
   void parseFourChoices(TiXmlDocument & xmlDocument);
-  void applyEffect(int number);
+  bool applyEffect(int number);
   ~Engine();
 };
 #endif

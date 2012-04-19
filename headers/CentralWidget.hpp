@@ -15,6 +15,7 @@ protected:
 public slots:
   void displayTransitionWidget(int);
   void nextLevel(int);
+  void newGame();
 public:
   CentralWidget(MainWindow* mainWindowPtr);
   void displayFourChoicesWidget();

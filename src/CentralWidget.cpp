@@ -1,6 +1,7 @@
 #include "CentralWidget.hpp"
 #include "TransitionWidget.hpp"
 #include "FourChoicesWidget.hpp"
+#include "GameOver.hpp"
 CentralWidget::CentralWidget(MainWindow* mainWindowPtr):_mainWindowPtr(mainWindowPtr),_gameWidget(NULL)
 {
   _hud=new Hud(_mainWindowPtr);
@@ -19,12 +20,16 @@ CentralWidget::~CentralWidget()
 
 void CentralWidget::displayTransitionWidget(int number)
 {
-  _mainWindowPtr->getEnginePtr()->applyEffect(number);
+  bool vivant=_mainWindowPtr->getEnginePtr()->applyEffect(number);
   QWidget* old=_gameWidget;
-  _gameWidget=new TransitionWidget(this,number);
+  if(!vivant)
+    _gameWidget=new GameOver(this);
+  else
+    _gameWidget=new TransitionWidget(this,number);
   if(old!=NULL)
     old->deleteLater();
   _layout->addWidget(_gameWidget,0,0);
+  _mainWindowPtr->updateHud();
   _mainWindowPtr->displayCentral(this);
 }
 
@@ -57,3 +62,11 @@ void CentralWidget::displayFourChoicesWidget()
   _mainWindowPtr->displayCentral(this);
 }
 
+void CentralWidget::newGame()
+{
+  _mainWindowPtr->getEnginePtr()->chooseLevel("01.xml");
+  _mainWindowPtr->getEnginePtr()->getPlayerPtr()->setHp(100);
+  _mainWindowPtr->getEnginePtr()->getPlayerPtr()->setCp(100);
+  createWidget();
+
+}

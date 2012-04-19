@@ -9,6 +9,7 @@ int main(int argc, char** argv)
   Engine engine;
   engine.chooseLevel("01.xml");
   MainWindow mainWindow(&engine);
+  mainWindow.setWindowTitle("L'histoire dont vous êtes le héros");
   mainWindow.show();
   return app.exec();
 }

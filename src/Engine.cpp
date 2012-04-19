@@ -5,7 +5,7 @@
 Engine::Engine():_levelPtr(NULL)
 {
   QList<Skill> skills;
-  _playerPtr=new People(100,90,skills);
+  _playerPtr=new People(100,100,skills);
 }
 
 Engine::~Engine()
@@ -59,14 +59,21 @@ void Engine::parseFourChoices(TiXmlDocument & xmlDocument)
   _levelPtr=new FourChoicesLevel(text,buttonsName,effectTextList,linkList,type,effectList);
 }
 
-void Engine::applyEffect(int number)
+bool Engine::applyEffect(int number)
 {
   Effect effect=_levelPtr->getEffect(number);
   int hp=_playerPtr->getHp();
   int cp=_playerPtr->getCp();
   hp+=effect.getHp();
   cp+=effect.getCp();
+  if(hp<0)
+    hp=0;
+  if(cp<0)
+    cp=0;
   _playerPtr->setHp(hp);
   _playerPtr->setCp(cp);
+  if(hp<=0)
+    return false;
+  return true;
 }
 
