@@ -5,11 +5,9 @@ Hud::Hud(MainWindow* mainWindowPtr):_mainWindowPtr(mainWindowPtr)
   _cpBar=new QProgressBar;
   _hpBar->setValue(80);
   _cpBar->setValue(50);
-  _button=new QPushButton("Inventaire");
   _layout=new QGridLayout;
   _hpText=new QLabel("Hp");
   _cpText=new QLabel("Cp");
-  _layout->addWidget(_button,0,1);
   _layout->addWidget(_hpText,1,0);
   _layout->addWidget(_hpBar,1,1);
   _layout->addWidget(_cpText,2,0);
@@ -24,7 +22,6 @@ Hud::~Hud()
   QObject::disconnect(_mainWindowPtr,SIGNAL(hp(int)),_hpBar,SLOT(setValue(int)));
   QObject::disconnect(_mainWindowPtr,SIGNAL(cp(int)),_cpBar,SLOT(setValue(int)));
   delete _layout;
-  delete _button;
   delete _cpBar;
   delete _hpBar;
   delete _hpText;

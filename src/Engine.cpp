@@ -17,6 +17,7 @@ Engine::~Engine()
 
 void Engine::chooseLevel(const std::string & link )
 {
+  _currentLevel=link;
   QString levelType;
   TiXmlDocument documentXml(link);
   if(!documentXml.LoadFile()){
@@ -75,5 +76,34 @@ bool Engine::applyEffect(int number)
   if(hp<=0)
     return false;
   return true;
+}
+
+void Engine::saveGame(const QString & file)
+{
+  TiXmlDocument doc(file.toStdString());
+  TiXmlElement state("state");
+  state.SetAttribute("level",_currentLevel);
+  state.SetAttribute("hp",_playerPtr->getHp());
+  state.SetAttribute("cp",_playerPtr->getCp());
+  doc.InsertEndChild(state);
+  doc.SaveFile(file.toStdString());
+}
+
+void Engine::loadGame(const QString & file)
+{
+  int cp,hp;
+  QString level;
+  TiXmlDocument doc(file.toStdString());
+  if(!doc.LoadFile()){
+    std::cerr << "erreur lors du chargement" << std::endl;
+    std::cerr << "error #" << doc.ErrorId() << " : " << doc.ErrorDesc() << std::endl;
+  }
+  TiXmlElement *elem = doc.FirstChildElement();
+  elem->QueryIntAttribute("cp", &cp);
+  elem->QueryIntAttribute("hp", &hp);
+  level=elem->Attribute("level");
+  _playerPtr->setHp(hp);
+  _playerPtr->setCp(cp);
+  chooseLevel(level.toStdString());
 }
 

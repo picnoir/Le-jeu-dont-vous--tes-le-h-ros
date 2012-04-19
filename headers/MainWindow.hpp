@@ -12,7 +12,12 @@ protected:
   QWidget* _centralWidget;
   QMenu* _menuFichier;
   QAction* _actionQuitter;
+  QAction* _actionCharger;
+  QAction* _actionSauver;
   Engine* _enginePtr;
+public slots:
+  void save();
+  void load();
 signals:
   void hp(int);
   void cp(int);

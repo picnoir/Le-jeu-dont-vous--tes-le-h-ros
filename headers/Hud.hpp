@@ -11,7 +11,6 @@ class Hud:public QWidget
 protected:
   QProgressBar* _hpBar;
   QProgressBar* _cpBar;
-  QPushButton* _button;
   MainWindow* _mainWindowPtr;
   QGridLayout* _layout;
   QLabel* _hpText;

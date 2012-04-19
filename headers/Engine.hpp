@@ -11,10 +11,13 @@
 class Engine
 {
 protected:
+  std::string _currentLevel;
   People* _playerPtr;
   Level* _levelPtr;
 public:
   Engine();
+  void saveGame(const QString & file);
+  void loadGame(const QString & file);
   Level* getLevelPtr(){return _levelPtr;}
   People* getPlayerPtr(){return _playerPtr;}
   void chooseLevel(const std::string & link);
