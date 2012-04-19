@@ -1,3 +1,7 @@
+/**
+Interface composée de deux barres; la barre de vie et la barre de CP.
+Permet de connaitre à tout moment sa vie et ses CP
+ */
 #ifndef HUD
 #define HUD
 #include <QWidget>

@@ -5,11 +5,14 @@
 #include "CentralWidget.hpp"
 MainWindow::MainWindow(Engine* enginePtr):_centralWidget(NULL),_enginePtr(enginePtr)
 {
+  _barreOutils=addToolBar("Barre outils");
   _centralWidget=new CentralWidget(this);
   _menuFichier=menuBar()->addMenu("&Fichier");
   _actionQuitter=new QAction("&Quitter",this);
   _actionCharger=new QAction("&Charger",this);
+  _barreOutils->addAction(_actionCharger);
   _actionSauver=new QAction("&Sauver",this);
+  _barreOutils->addAction(_actionSauver);
   _actionQuitter->setShortcut(QKeySequence("Ctrl+Q"));
   _actionCharger->setShortcut(QKeySequence("Ctrl+C"));
   _actionSauver->setShortcut(QKeySequence("Ctrl+S"));

@@ -1,3 +1,7 @@
+/**
+Widget central: contient le widget de jeu et le HUD
+ */
+
 #ifndef CENTRALWIDGET
 #define CENTRALWIDGET
 #include <QWidget>

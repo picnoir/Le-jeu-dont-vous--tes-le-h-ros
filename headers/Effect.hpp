@@ -1,3 +1,6 @@
+/*
+Cette classe permet d'encapsuler les différents effets des attaques/transitions
+ */
 #ifndef EFFECT
 #define EFFECT
 class Effect

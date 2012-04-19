@@ -1,8 +1,12 @@
+/**
+Fenêtre principale. Contient les menus de jeu ainsi que les widgets. Possède un pointeur du moteur qui lui permet de communiquer avec ce dernier
+ */
 #ifndef MAINWINDOW
 #define MAINWINDOW
 #include <QMainWindow>
 #include <QWidget>
 #include <QAction>
+#include <QToolBar>
 #include "Engine.hpp"
 class MainWindow: public QMainWindow
 {
@@ -15,6 +19,7 @@ protected:
   QAction* _actionCharger;
   QAction* _actionSauver;
   Engine* _enginePtr;
+  QToolBar* _barreOutils;
 public slots:
   void save();
   void load();

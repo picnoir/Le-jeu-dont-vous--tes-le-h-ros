@@ -1,3 +1,6 @@
+/**
+Widget de game over. Permet de relancer une partie.
+ */
 #ifndef GAMEOVER
 #define GAMEOVER
 #include <QPushButton>

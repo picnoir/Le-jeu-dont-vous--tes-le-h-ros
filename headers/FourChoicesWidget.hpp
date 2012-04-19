@@ -1,3 +1,6 @@
+/**
+Widget composé d'un texte et quatres boutons
+ */
 #ifndef FOURCHOICESWIDGET
 #define FOURCHOICESWIDGET
 #include <QLabel>

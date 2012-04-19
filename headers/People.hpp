@@ -1,3 +1,6 @@
+/**
+Classe encapsulant les différents paramètres d'un personnage (joueur ou non joueur)
+ */
 #ifndef PEOPLE
 #define PEOPLE
 #include "Skill.hpp"

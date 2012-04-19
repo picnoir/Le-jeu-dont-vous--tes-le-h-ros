@@ -1,3 +1,6 @@
+/**
+Classe encapsulant les différentes compétences des personnages.
+ */
 #ifndef SKILL
 #define SKILL
 #include <QString>
